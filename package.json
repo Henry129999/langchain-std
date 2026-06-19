@@ -1,0 +1,33 @@
+{
+  "name": "langchain-agent-study",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Step-by-step LangChain JavaScript agent learning project.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/check-node-version.mjs",
+    "lesson:01": "tsx src/lessons/01-basic-agent.ts",
+    "lesson:02": "tsx src/lessons/02-tool-design.ts",
+    "lesson:03": "tsx src/lessons/03-system-prompt.ts",
+    "lesson:04": "tsx src/lessons/04-memory.ts",
+    "lesson:05": "tsx src/lessons/05-research-agent.ts",
+    "lesson:06": "tsx src/lessons/06-deep-agent.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@langchain/core": "latest",
+    "@langchain/langgraph": "latest",
+    "deepagents": "latest",
+    "dotenv": "latest",
+    "langchain": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

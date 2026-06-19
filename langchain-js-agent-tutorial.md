@@ -3,6 +3,8 @@
 资料来源：LangChain 官方文档 Quickstart  
 原文链接：https://docs.langchain.com/oss/javascript/langchain/quickstart#langchain-agents
 
+配套可运行项目见本仓库 `README.md`。建议先按 README 跑通每个 lesson，再回到本文档补概念。
+
 ## 0. 学习目标
 
 这份教程先围绕 LangChain JavaScript 的 Agent 入门路径展开。完成本教程后，你应该能理解：
