@@ -42,4 +42,6 @@ const result = await agent.invoke(
   }
 );
 
+console.log('===========>', result);
+
 printMessages(result);

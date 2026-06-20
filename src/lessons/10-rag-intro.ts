@@ -21,14 +21,20 @@ const question =
   process.env.COURSE_RAG_QUESTION ||
   "新版 LangChain-only 课程为什么暂时跳过 DeepAgent 和 LangGraph？";
 
+console.log(question);
+
 const documents = await loadCourseDocuments([
   "README.md",
   "docs/langchain-lessons-curriculum.md",
   "exercises/README.md",
 ]);
 const chunks = splitDocuments(documents);
+console.log('chunks------->', chunks)
+
 const retrieved = retrieveRelevantChunks(question, chunks, 4);
+console.log('retrieved chunks -------->', retrieved);
 const context = formatRetrievedChunks(retrieved);
+console.log('context---------->', context)
 
 console.log("\n--- retrieved chunks ---");
 console.dir(

@@ -27,7 +27,7 @@ const result = await agent.invoke(
     messages: [
       {
         role: "user",
-        content: "nanjing今天的天气怎么样？请说明你是否调用了工具。",
+        content: "上海今天的天气怎么样？请说明你是否调用了工具。",
       },
     ],
   },
