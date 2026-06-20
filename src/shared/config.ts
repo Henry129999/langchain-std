@@ -27,23 +27,41 @@ export function requireModelEnvironment(): void {
  * 指向 `https://open.bigmodel.cn/api/paas/v4`。
  */
 export function createCourseModel(options?: {
+  /** 控制模型输出随机性；越低越稳定，越高越发散。 */
   temperature?: number;
+  /** 单次模型请求的超时时间，单位是毫秒。 */
   timeout?: number;
+  /** 模型单次回复最多生成的 token 数，不是输入上下文长度。 */
   maxTokens?: number;
 }): ChatOpenAI {
   requireModelEnvironment();
 
   return new ChatOpenAI({
+    // 实际请求的模型名，优先来自 `.env` 的 GLM_MODEL，默认使用 glm-5.2。
     model: modelName,
+
+    // 采样温度；课程默认偏开放，严谨抽取或结构化输出时建议传入更低值。
     temperature: options?.temperature ?? 1,
+
+    // HTTP 请求超时；长文本研究和 Deep Agent 任务可能需要更长等待时间。
     timeout: options?.timeout ?? 300_000,
+
+    // 输出长度上限；回答被截断时通常需要提高这个值并检查 finish_reason。
     maxTokens: options?.maxTokens ?? 4096,
+
+    // 智谱 GLM API Key；requireModelEnvironment 会在缺失时提前抛出清晰错误。
     apiKey: process.env.GLM_API_KEY,
+
+    // OpenAI SDK 底层配置；baseURL 指向 GLM 的 OpenAI-compatible endpoint。
     configuration: {
+      // 最终请求会发送到 `${baseURL}/chat/completions` 这一类兼容接口。
       baseURL: glmBaseUrl,
     },
+
+    // 透传给模型服务商的非标准扩展参数；这里启用 GLM 的 thinking 能力。
     modelKwargs: {
       thinking: {
+        // 启用后响应中可能出现 reasoning_content 和 reasoning token 统计。
         type: "enabled",
       },
     },
