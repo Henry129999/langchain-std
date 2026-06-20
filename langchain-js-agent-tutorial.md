@@ -184,7 +184,6 @@ const model = new ChatOpenAI({
   model: "glm-5.2",
   temperature: 0.5,
   timeout: 300_000,
-  maxTokens: 25000,
   apiKey: process.env.GLM_API_KEY,
   configuration: {
     baseURL: "https://open.bigmodel.cn/api/paas/v4",
@@ -201,7 +200,6 @@ const model = new ChatOpenAI({
 
 - `temperature` 越低，输出越稳定；越高，表达更发散。
 - `timeout` 控制请求等待时间。
-- `maxTokens` 控制最大输出长度，长文档任务通常需要更高上限。
 - 不同模型提供商的参数可能不同，需要查对应 provider 文档。
 
 实践建议：

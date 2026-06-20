@@ -41,7 +41,7 @@ console.dir(
 );
 
 const agent = createAgent({
-  model: createCourseModel({ temperature: 0.1, maxTokens: 2000 }),
+  model: createCourseModel({ temperature: 0.1 }),
   tools: [],
   responseFormat: toolStrategy(ResearchAnswerSchema),
   systemPrompt: `你是一个 RAG 课程资料问答助手。

@@ -108,7 +108,7 @@
 1. 运行 `npm run check` 确认 Node.js 版本。
 2. 运行 `npm install` 安装依赖。
 3. 复制 `.env.example` 为 `.env`，填写 `GLM_API_KEY`。
-4. 阅读 `createCourseModel`，确认模型名、base URL、temperature、timeout 和 maxTokens 的默认值。
+4. 阅读 `createCourseModel`，确认模型名、base URL、temperature 和 timeout 的默认值。
 5. 运行 `npm run typecheck`，确认 TypeScript 能通过。
 
 最佳实践：
@@ -116,7 +116,7 @@
 - API key 只放 `.env`，不要进入代码和文档示例输出。
 - 每个 lesson 只依赖模型工厂，不直接 new provider client。
 - 严谨抽取、分类、结构化输出任务默认低 temperature。
-- 长任务要显式设置 timeout 和 maxTokens，但不要把它当成解决长上下文问题的唯一方案。
+- 长任务要显式设置 timeout；长上下文问题应优先用分块、检索或更合适的任务拆分处理。
 
 验收标准：
 

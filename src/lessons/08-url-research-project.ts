@@ -23,7 +23,6 @@ const agent = createAgent({
   model: createCourseModel({
     temperature: 0.1,
     timeout: 300_000,
-    maxTokens: 2000,
   }),
   tools: [fetchTextFromUrl],
   responseFormat: toolStrategy(ResearchAnswerSchema),

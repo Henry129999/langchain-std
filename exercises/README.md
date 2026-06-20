@@ -5,7 +5,7 @@
 ## 第 01 课：环境、模型与项目骨架
 
 - 修改 `temperature` 为 `0` 和 `0.8`，比较回答稳定性。
-- 修改 `maxTokens`，观察输出被截断时的表现。
+- 修改 `temperature`，观察回答稳定性和表达风格变化。
 - 阅读 `src/shared/config.ts`，说明 provider 相关配置为什么不应该散落在 lesson 文件里。
 
 ## 第 02 课：Messages 与最小模型调用

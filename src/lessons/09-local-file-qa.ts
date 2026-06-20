@@ -20,7 +20,7 @@ const question =
   "请总结第 05 课和第 06 课的练习重点。";
 
 const agent = createAgent({
-  model: createCourseModel({ temperature: 0.1, maxTokens: 2000 }),
+  model: createCourseModel({ temperature: 0.1 }),
   tools: [readLocalTextFile],
   responseFormat: toolStrategy(ResearchAnswerSchema),
   systemPrompt: `你是一个本地课程文件问答助手。

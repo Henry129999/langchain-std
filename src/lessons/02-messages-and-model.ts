@@ -12,7 +12,6 @@ printLessonHeader("第 02 课：Messages 与最小模型调用");
 
 const model = createCourseModel({
   temperature: 0.2,
-  maxTokens: 1000,
 });
 
 const firstMessages = [

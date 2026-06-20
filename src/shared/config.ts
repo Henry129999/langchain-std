@@ -32,7 +32,6 @@ export function requireModelEnvironment(): void {
  * - model：模型名称，例如 glm-5.2、gpt-4o、gpt-4.1。
  * - apiKey：模型服务商 API Key。
  * - temperature：采样温度，控制输出随机性。
- * - maxTokens：单次回复最大输出 token 数。
  * - timeout：请求超时时间，单位毫秒。
  * - maxRetries：请求失败后的最大重试次数，适合处理临时网络或限流问题。
  * - stop：停止词，模型生成到指定字符串时停止。
@@ -59,8 +58,6 @@ export function createCourseModel(options?: {
   temperature?: number;
   /** 单次模型请求的超时时间，单位是毫秒。 */
   timeout?: number;
-  /** 模型单次回复最多生成的 token 数，不是输入上下文长度。 */
-  maxTokens?: number;
 }): ChatOpenAI {
   requireModelEnvironment();
 
@@ -73,9 +70,6 @@ export function createCourseModel(options?: {
 
     // HTTP 请求超时；长文本研究任务可能需要更长等待时间。
     timeout: options?.timeout ?? 300_000,
-
-    // 输出长度上限；回答被截断时通常需要提高这个值并检查 finish_reason。
-    maxTokens: options?.maxTokens ?? 4096,
 
     // 智谱 GLM API Key；requireModelEnvironment 会在缺失时提前抛出清晰错误。
     apiKey: process.env.GLM_API_KEY,

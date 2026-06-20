@@ -12,7 +12,6 @@ printLessonHeader("第 01 课：环境、模型与项目骨架");
 
 const model = createCourseModel({
   temperature: 0.2,
-  maxTokens: 800,
 });
 
 const result = await model.invoke([

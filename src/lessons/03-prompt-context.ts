@@ -12,7 +12,6 @@ printLessonHeader("第 03 课：Prompt 与 Context Engineering");
 
 const model = createCourseModel({
   temperature: 0.1,
-  maxTokens: 1200,
 });
 
 const untrustedCourseNote = `
