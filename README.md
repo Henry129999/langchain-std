@@ -1,4 +1,4 @@
-# LangChain Agent Study
+# langchain-std
 
 这是一个按 LangChain JavaScript Quickstart 拆出来的学习项目。目标不是一次写完一个复杂应用，而是让你按脚本一步一步理解 Agent、工具、提示词、记忆、研究任务和 Deep Agents。
 
