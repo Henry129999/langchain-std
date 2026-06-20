@@ -22,6 +22,7 @@
     "lesson:11": "tsx src/lessons/11-streaming.ts",
     "lesson:12": "tsx src/lessons/12-langsmith-debugging-testing.ts",
     "advanced:map": "tsx src/advanced-lessons/print-course-map.ts",
+    "advanced:lesson": "tsx src/advanced-lessons/print-lesson.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
