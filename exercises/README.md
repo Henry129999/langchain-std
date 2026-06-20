@@ -37,3 +37,33 @@ Use these exercises after each lesson script.
 - Compare the output of `lesson:05` and `lesson:06` for the same question.
 - Ask a counting question and check whether Deep Agent uses stronger built-in tools.
 - Enable LangSmith tracing and inspect the model/tool call sequence.
+
+## Lesson 07
+
+- Set `LANGSMITH_TRACING=true` and run `npm run lesson:07`.
+- Compare the terminal output with the LangSmith trace.
+- Check whether the trace shows the weather tool call and its arguments.
+
+## Lesson 08
+
+- Set `COURSE_RESEARCH_URL` to another public text URL.
+- Set `COURSE_RESEARCH_QUESTION` to a question that requires evidence.
+- Check whether the answer includes `answer`, `evidence`, and `limitations`.
+
+## Lesson 09
+
+- Change the price and discount rate in `src/lessons/09-structured-output.ts`.
+- Check whether the final answer remains valid JSON.
+- Add another required JSON field in the system prompt and observe compliance.
+
+## Lesson 10
+
+- Ask the Agent to read `README.md` instead of `exercises/README.md`.
+- Try a path outside the project directory and confirm the tool refuses it.
+- Ask a question that the selected file cannot answer.
+
+## Lesson 11
+
+- Search for `memory`, `research`, and `beginner`.
+- Ask for a keyword that does not exist in the catalog.
+- Add a new course record in `src/tools/course-catalog.ts` and rerun the lesson.

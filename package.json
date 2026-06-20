@@ -15,6 +15,11 @@
     "lesson:04": "tsx src/lessons/04-memory.ts",
     "lesson:05": "tsx src/lessons/05-research-agent.ts",
     "lesson:06": "tsx src/lessons/06-deep-agent.ts",
+    "lesson:07": "tsx src/lessons/07-langsmith-tracing.ts",
+    "lesson:08": "tsx src/lessons/08-url-research-project.ts",
+    "lesson:09": "tsx src/lessons/09-structured-output.ts",
+    "lesson:10": "tsx src/lessons/10-local-file-qa.ts",
+    "lesson:11": "tsx src/lessons/11-database-tool.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

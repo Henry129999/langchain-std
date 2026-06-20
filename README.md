@@ -51,6 +51,11 @@ npm run lesson:03
 npm run lesson:04
 npm run lesson:05
 npm run lesson:06
+npm run lesson:07
+npm run lesson:08
+npm run lesson:09
+npm run lesson:10
+npm run lesson:11
 ```
 
 每一课对应一个文件：
@@ -63,6 +68,13 @@ npm run lesson:06
 | 04 | `src/lessons/04-memory.ts` | `MemorySaver` 和 `thread_id` |
 | 05 | `src/lessons/05-research-agent.ts` | URL 文本研究 Agent |
 | 06 | `src/lessons/06-deep-agent.ts` | Deep Agent 对比 |
+| 07 | `src/lessons/07-langsmith-tracing.ts` | LangSmith 追踪 |
+| 08 | `src/lessons/08-url-research-project.ts` | URL 文本研究助手实战 |
+| 09 | `src/lessons/09-structured-output.ts` | 结构化输出 Agent |
+| 10 | `src/lessons/10-local-file-qa.ts` | 本地文件问答 Agent |
+| 11 | `src/lessons/11-database-tool.ts` | 数据库查询工具 |
+
+教程章节与课程文件的完整对照见 `docs/course-coverage.md`。
 
 ## 4. 推荐学习方式
 
@@ -73,6 +85,9 @@ npm run lesson:06
 5. 跑 `lesson:04`，改变 `thread_id` 观察记忆边界。
 6. 跑 `lesson:05`，换 URL 练习研究型 Agent。
 7. 跑 `lesson:06`，对比 Deep Agent 是否更适合复杂任务。
+8. 跑 `lesson:07`，开启 LangSmith 后观察 trace。
+9. 跑 `lesson:08`，完成 URL 文本研究助手实战。
+10. 跑 `lesson:09` 到 `lesson:11`，练习结构化输出、本地文件问答和数据库工具。
 
 练习题在 `exercises/README.md`。
 
@@ -93,6 +108,9 @@ LANGSMITH_API_KEY=你的 LangSmith key
 langchain-agent-study/
   exercises/
     README.md
+  docs/
+    course-coverage.md
+    provider-switching.md
   scripts/
     check-node-version.mjs
   src/

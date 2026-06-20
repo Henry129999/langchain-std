@@ -334,6 +334,13 @@ $env:LANGSMITH_API_KEY = "..."
 - 用 LangSmith 调试一次错误工具调用。
 - 部署 Agent 到一个 Web API。
 
+本项目已经把其中一部分扩展落成课程：
+
+- 结构化输出 Agent：`src/lessons/09-structured-output.ts`
+- 本地文件问答 Agent：`src/lessons/10-local-file-qa.ts`
+- 数据库查询工具：`src/lessons/11-database-tool.ts`
+- Provider 切换说明：`docs/provider-switching.md`
+
 ## 11. 本教程的第一个实战项目
 
 项目名称：URL 文本研究助手
@@ -361,3 +368,7 @@ langchain-agent-lab/
 ```
 
 后续我们可以继续把这个教程落成一个可运行项目。
+
+本仓库已补充对应实战课程：`src/lessons/08-url-research-project.ts`。
+
+教程章节与课程文件的完整覆盖关系见 `docs/course-coverage.md`。
