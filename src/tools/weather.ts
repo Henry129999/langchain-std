@@ -1,12 +1,73 @@
 import { tool } from "langchain";
 import { z } from "zod";
 
-const weatherByCity: Record<string, string> = {
-  "San Francisco": "旧金山今天气候温和，有微风。",
-  Shanghai: "上海今天温暖潮湿。",
-  Beijing: "北京今天干燥，天空晴朗。",
-  Shenzhen: "深圳今天温暖，有零散云层。",
+interface CityRecord {
+  canonicalName: string;
+  weather: string;
+  timezone: string;
+  country: string;
+}
+
+const cityRecords: Record<string, CityRecord> = {
+  "san francisco": {
+    canonicalName: "San Francisco",
+    weather: "旧金山今天气候温和，有微风。",
+    timezone: "America/Los_Angeles",
+    country: "United States",
+  },
+  shanghai: {
+    canonicalName: "Shanghai",
+    weather: "上海今天温暖潮湿。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  "上海": {
+    canonicalName: "Shanghai",
+    weather: "上海今天温暖潮湿。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  beijing: {
+    canonicalName: "Beijing",
+    weather: "北京今天干燥，天空晴朗。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  "北京": {
+    canonicalName: "Beijing",
+    weather: "北京今天干燥，天空晴朗。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  shenzhen: {
+    canonicalName: "Shenzhen",
+    weather: "深圳今天温暖，有零散云层。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  "深圳": {
+    canonicalName: "Shenzhen",
+    weather: "深圳今天温暖，有零散云层。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  nanjing: {
+    canonicalName: "Nanjing",
+    weather: "南京今天多云，适合户外通勤。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
+  "南京": {
+    canonicalName: "Nanjing",
+    weather: "南京今天多云，适合户外通勤。",
+    timezone: "Asia/Shanghai",
+    country: "China",
+  },
 };
+
+function findCity(city: string): CityRecord | undefined {
+  return cityRecords[city.trim().toLowerCase()] ?? cityRecords[city.trim()];
+}
 
 /**
  * 天气查询工具。
@@ -16,7 +77,13 @@ const weatherByCity: Record<string, string> = {
  */
 export const getWeather = tool(
   ({ city }: { city: string }) => {
-    return weatherByCity[city] ?? `这个演示中没有 ${city} 的本地天气数据。`;
+    const record = findCity(city);
+
+    if (!record) {
+      return `这个演示中没有 ${city} 的本地天气数据。`;
+    }
+
+    return record.weather;
   },
   {
     name: "get_weather",
@@ -35,20 +102,35 @@ export const getWeather = tool(
  */
 export const getCityTimezone = tool(
   ({ city }: { city: string }) => {
-    const timezones: Record<string, string> = {
-      "San Francisco": "America/Los_Angeles",
-      Shanghai: "Asia/Shanghai",
-      Beijing: "Asia/Shanghai",
-      Shenzhen: "Asia/Shanghai",
-    };
+    const record = findCity(city);
 
-    return timezones[city] ?? `没有保存 ${city} 的时区数据。`;
+    return record?.timezone ?? `没有保存 ${city} 的时区数据。`;
   },
   {
     name: "get_city_timezone",
     description: "查询某个城市的 IANA 时区名称。",
     schema: z.object({
       city: z.string().describe("需要查询时区的城市"),
+    }),
+  }
+);
+
+/**
+ * 城市所属国家查询工具。
+ *
+ * 第 04 课会用它演示“新增工具时只扩展确定性能力，不改 Agent 主流程”。
+ */
+export const getCityCountry = tool(
+  ({ city }: { city: string }) => {
+    const record = findCity(city);
+
+    return record?.country ?? `没有保存 ${city} 的国家信息。`;
+  },
+  {
+    name: "get_city_country",
+    description: "查询某个城市所属国家；只回答演示数据中保存的城市。",
+    schema: z.object({
+      city: z.string().describe("需要查询所属国家的城市"),
     }),
   }
 );

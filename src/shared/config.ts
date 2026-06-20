@@ -25,6 +25,34 @@ export function requireModelEnvironment(): void {
  * 智谱开放平台的 `/chat/completions` 接口兼容 OpenAI 风格请求，
  * 所以这里使用 `@langchain/openai` 的 ChatOpenAI 适配器，并把 baseURL
  * 指向 `https://open.bigmodel.cn/api/paas/v4`。
+ *
+ * ChatOpenAI 常用学习索引：
+ *
+ * 构造参数：
+ * - model：模型名称，例如 glm-5.2、gpt-4o、gpt-4.1。
+ * - apiKey：模型服务商 API Key。
+ * - temperature：采样温度，控制输出随机性。
+ * - maxTokens：单次回复最大输出 token 数。
+ * - timeout：请求超时时间，单位毫秒。
+ * - maxRetries：请求失败后的最大重试次数，适合处理临时网络或限流问题。
+ * - stop：停止词，模型生成到指定字符串时停止。
+ * - streaming：是否启用 token 流式输出；也可以直接调用 stream()。
+ * - callbacks：LangChain 回调，用于日志、追踪、自定义监控。
+ * - configuration.baseURL：OpenAI-compatible endpoint 地址。
+ * - configuration.defaultHeaders：给底层 HTTP 请求追加默认请求头。
+ * - configuration.defaultQuery：给底层 HTTP 请求追加默认 query 参数。
+ * - modelKwargs：透传给具体模型服务商的非标准扩展参数。
+ *
+ * 实例方法：
+ * - invoke(input)：单次调用模型，返回一条 AIMessage。
+ * - stream(input)：流式调用模型，返回可异步迭代的消息 chunk。
+ * - batch(inputs)：批量调用同一个模型配置。
+ * - bindTools(tools)：把工具绑定到模型，常用于 function/tool calling。
+ * - withStructuredOutput(schema)：约束模型按结构化 schema 输出。
+ * - withConfig(config)：给 Runnable 附加 tags、metadata、runName 等运行配置。
+ * - withRetry(options)：给模型调用加重试策略。
+ * - withFallbacks(models)：主模型失败时切换到备用模型。
+ * - pipe(next)：把模型输出接到下一个 Runnable，组成链式流程。
  */
 export function createCourseModel(options?: {
   /** 控制模型输出随机性；越低越稳定，越高越发散。 */
@@ -43,7 +71,7 @@ export function createCourseModel(options?: {
     // 采样温度；课程默认偏开放，严谨抽取或结构化输出时建议传入更低值。
     temperature: options?.temperature ?? 1,
 
-    // HTTP 请求超时；长文本研究和 Deep Agent 任务可能需要更长等待时间。
+    // HTTP 请求超时；长文本研究任务可能需要更长等待时间。
     timeout: options?.timeout ?? 300_000,
 
     // 输出长度上限；回答被截断时通常需要提高这个值并检查 finish_reason。

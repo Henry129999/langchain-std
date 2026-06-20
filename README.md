@@ -1,6 +1,8 @@
 # langchain-std
 
-这是一个按 LangChain JavaScript Quickstart 拆出来的学习项目。目标不是一次写完一个复杂应用，而是让你按脚本一步一步理解 Agent、工具、提示词、记忆、研究任务和 Deep Agents。
+这是一个按 LangChain JavaScript Quickstart 拆出来的学习项目。目标不是一次写完一个复杂应用，而是让你按脚本一步一步理解 LangChain 的模型调用、Agent、工具、提示词、结构化输出、RAG、Streaming 和 LangSmith 调试。
+
+当前阶段只学习 LangChain 栏目，不展开 DeepAgent 和 LangGraph。新版课程章节见 `docs/langchain-lessons-curriculum.md`。
 
 官方文档入口：https://docs.langchain.com/oss/javascript/langchain/quickstart#langchain-agents
 
@@ -42,7 +44,13 @@ GLM_BASE_URL=https://open.bigmodel.cn/api/paas/v4
 
 ## 3. 学习路线
 
-按顺序运行：
+如果你按新版 LangChain-only 课程学习，请先阅读：
+
+```text
+docs/langchain-lessons-curriculum.md
+```
+
+当前阶段按顺序运行这些脚本：
 
 ```powershell
 npm run lesson:01
@@ -56,23 +64,25 @@ npm run lesson:08
 npm run lesson:09
 npm run lesson:10
 npm run lesson:11
+npm run lesson:12
 ```
 
 每一课对应一个文件：
 
 | 课程 | 文件 | 重点 |
 | --- | --- | --- |
-| 01 | `src/lessons/01-basic-agent.ts` | 最小 Agent 和工具调用 |
-| 02 | `src/lessons/02-tool-design.ts` | 多工具设计 |
-| 03 | `src/lessons/03-system-prompt.ts` | 系统提示词约束行为 |
-| 04 | `src/lessons/04-memory.ts` | `MemorySaver` 和 `thread_id` |
-| 05 | `src/lessons/05-research-agent.ts` | URL 文本研究 Agent |
-| 06 | `src/lessons/06-deep-agent.ts` | Deep Agent 对比 |
-| 07 | `src/lessons/07-langsmith-tracing.ts` | LangSmith 追踪 |
+| 01 | `src/lessons/01-environment-model.ts` | 环境、模型与项目骨架 |
+| 02 | `src/lessons/02-messages-and-model.ts` | Messages 与最小模型调用 |
+| 03 | `src/lessons/03-prompt-context.ts` | Prompt 与 Context Engineering |
+| 04 | `src/lessons/04-tool-design.ts` | Tool 设计基础 |
+| 05 | `src/lessons/05-first-agent.ts` | 第一个 LangChain Agent |
+| 06 | `src/lessons/06-tool-engineering.ts` | 工具工程最佳实践 |
+| 07 | `src/lessons/07-structured-output.ts` | 结构化输出 |
 | 08 | `src/lessons/08-url-research-project.ts` | URL 文本研究助手实战 |
-| 09 | `src/lessons/09-structured-output.ts` | 结构化输出 Agent |
-| 10 | `src/lessons/10-local-file-qa.ts` | 本地文件问答 Agent |
-| 11 | `src/lessons/11-database-tool.ts` | 数据库查询工具 |
+| 09 | `src/lessons/09-local-file-qa.ts` | 本地文件问答 |
+| 10 | `src/lessons/10-rag-intro.ts` | RAG 入门 |
+| 11 | `src/lessons/11-streaming.ts` | Streaming 与运行体验 |
+| 12 | `src/lessons/12-langsmith-debugging-testing.ts` | LangSmith 调试与测试 |
 
 教程章节与课程文件的完整对照见 `docs/course-coverage.md`。
 
@@ -82,12 +92,12 @@ npm run lesson:11
 2. 跑 `lesson:01`，只改城市名和问题。
 3. 跑 `lesson:02`，自己添加一个工具。
 4. 跑 `lesson:03`，改 system prompt 观察输出变化。
-5. 跑 `lesson:04`，改变 `thread_id` 观察记忆边界。
-6. 跑 `lesson:05`，换 URL 练习研究型 Agent。
-7. 跑 `lesson:06`，对比 Deep Agent 是否更适合复杂任务。
-8. 跑 `lesson:07`，开启 LangSmith 后观察 trace。
+5. 跑 `lesson:04`，新增或修改一个工具。
+6. 跑 `lesson:05`，观察完整 Agent message trace。
+7. 跑 `lesson:06`，检查 URL 和本地文件工具的安全边界。
+8. 跑 `lesson:07`，观察 `structuredResponse`。
 9. 跑 `lesson:08`，完成 URL 文本研究助手实战。
-10. 跑 `lesson:09` 到 `lesson:11`，练习结构化输出、本地文件问答和数据库工具。
+10. 跑 `lesson:09` 到 `lesson:12`，练习文件问答、RAG、Streaming 和测试。
 
 练习题在 `exercises/README.md`。
 
@@ -116,6 +126,7 @@ langchain-agent-study/
   src/
     lessons/
     prompts/
+    rag/
     shared/
     tools/
   .env.example
@@ -138,6 +149,6 @@ langchain-agent-study/
 
 确认 `.env` 中的 `GLM_MODEL`、`GLM_BASE_URL` 和 `GLM_API_KEY` 是否正确。
 
-研究型脚本消耗 token 较多：
+研究型和 RAG 脚本消耗 token 较多：
 
-`lesson:05` 和 `lesson:06` 会读取较长文本。初学时可以换成短一点的公开 URL。
+`lesson:08` 到 `lesson:10` 会读取文本资料。初学时可以换成短一点的公开 URL 或减少本地文档数量。

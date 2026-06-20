@@ -3,7 +3,7 @@
 资料来源：LangChain 官方文档 Quickstart  
 原文链接：https://docs.langchain.com/oss/javascript/langchain/quickstart#langchain-agents
 
-配套可运行项目见本仓库 `README.md`。建议先按 README 跑通每个 lesson，再回到本文档补概念。
+配套可运行项目见本仓库 `README.md`。当前仓库已经按 LangChain-only 路线重排，逐课跟学请优先看 `docs/langchain-lessons-curriculum.md` 和 `src/lessons/01` 到 `12`。DeepAgent 和 LangGraph 后续单独学习，本文件中提到的 Deep Agents 只作为概念预告。
 
 ## 0. 学习目标
 
@@ -12,7 +12,7 @@
 - LangChain Agent 是如何把模型、工具和提示词组合起来工作的。
 - 如何用 `createAgent` 创建一个最小可运行 Agent。
 - 如何用 `tool` 暴露外部能力给模型调用。
-- 为什么复杂任务需要记忆、追踪、文件工具或 Deep Agents。
+- 为什么复杂任务需要追踪、文件工具、RAG，以及后续可能需要 DeepAgent / LangGraph。
 - 如何把官方 Quickstart 改造成自己的练习项目。
 
 ## 1. 环境准备

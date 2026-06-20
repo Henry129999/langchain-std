@@ -1,45 +1,40 @@
-import { MemorySaver } from "@langchain/langgraph";
-import { createAgent } from "langchain";
+import { createAgent, toolStrategy } from "langchain";
 import { createCourseModel, printLessonHeader } from "../shared/config.js";
-import { printLastMessage } from "../shared/output.js";
-import { researchAssistantPrompt } from "../prompts/research-assistant.js";
+import { printStructuredResponse } from "../shared/output.js";
+import { ResearchAnswerSchema } from "../shared/schemas.js";
 import { fetchTextFromUrl } from "../tools/fetch-text-from-url.js";
 
 /**
- * 第 08 课：URL 文本研究助手
+ * 第 08 课：入门项目 v1：URL 研究助手
  *
- * 本节课对应教程中的第一个实战项目：
- * 1. 用户提供 URL 和问题。
- * 2. Agent 必须调用 `fetch_text_from_url` 抓取文本。
- * 3. Agent 只基于抓取内容回答。
- * 4. 输出必须包含 `answer`、`evidence`、`limitations`。
+ * 学习目标：
+ * 1. 用户输入 URL 和问题。
+ * 2. Agent 调用 URL 工具读取文本。
+ * 3. 最终输出结构化 answer、evidence、limitations、nextActions。
  */
-printLessonHeader("第 08 课：URL 文本研究助手");
+printLessonHeader("第 08 课：入门项目 v1：URL 研究助手");
 
-const url =
-  process.env.COURSE_RESEARCH_URL ||
-  "https://www.gutenberg.org/files/64317/64317-0.txt";
+const url = process.env.COURSE_RESEARCH_URL || "https://example.com";
 const question =
   process.env.COURSE_RESEARCH_QUESTION ||
-  "这本书主要讲什么？请给出简短答案。";
+  "这个页面主要说明了什么？请基于页面内容回答。";
 
 const agent = createAgent({
   model: createCourseModel({
-    temperature: 0.2,
+    temperature: 0.1,
     timeout: 300_000,
-    maxTokens: 4000,
+    maxTokens: 2000,
   }),
   tools: [fetchTextFromUrl],
-  systemPrompt: `${researchAssistantPrompt}
+  responseFormat: toolStrategy(ResearchAnswerSchema),
+  systemPrompt: `你是一个严谨的 URL 研究助手。
 
-## 输出格式
-
-请严格使用以下 Markdown 小节：
-
-### answer
-### evidence
-### limitations`,
-  checkpointer: new MemorySaver(),
+规则：
+- 回答前必须调用 fetch_text_from_url。
+- 工具返回 JSON；只有 ok=true 时才能使用 text 字段回答。
+- evidence 必须来自工具返回的 text。
+- 如果工具失败、内容被截断或证据不足，要写入 limitations。
+- 不要使用外部知识补全答案。`,
 });
 
 const result = await agent.invoke(
@@ -49,13 +44,15 @@ const result = await agent.invoke(
         role: "user",
         content: `URL: ${url}
 
-问题：${question}
-
-请先读取 URL，再回答。`,
+问题：${question}`,
       },
     ],
   },
-  { configurable: { thread_id: "lesson-08-url-research-project" } }
+  {
+    runName: "lesson-08-url-research-project",
+    tags: ["lesson", "project", "url-research"],
+    metadata: { lesson: 8, url },
+  }
 );
 
-printLastMessage(result);
+printStructuredResponse(result);

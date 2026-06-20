@@ -50,7 +50,16 @@ export const searchCourseCatalog = tool(
       })
       .slice(0, maxResults);
 
-    return JSON.stringify(matches, null, 2);
+    return JSON.stringify(
+      {
+        ok: true,
+        keyword,
+        count: matches.length,
+        results: matches,
+      },
+      null,
+      2
+    );
   },
   {
     name: "search_course_catalog",
