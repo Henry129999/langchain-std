@@ -1,69 +1,69 @@
-# Exercises
+# 练习题
 
-Use these exercises after each lesson script.
+每运行完一个 lesson 脚本后，可以用对应练习继续修改和观察结果。
 
-## Lesson 01
+## 第 01 课
 
-- Change the city in `src/lessons/01-basic-agent.ts`.
-- Add a new city to `src/tools/weather.ts`.
-- Ask a question that does not require the weather tool and observe the result.
+- 修改 `src/lessons/01-basic-agent.ts` 中的城市。
+- 在 `src/tools/weather.ts` 中新增一个城市。
+- 提一个不需要天气工具的问题，观察 Agent 的回答。
 
-## Lesson 02
+## 第 02 课
 
-- Add a third tool named `get_city_language`.
-- Make the user ask about two cities in one message.
-- Compare whether the model calls one tool or multiple tools.
+- 新增第三个工具，命名为 `get_city_language`。
+- 让用户在同一条消息里询问两个城市。
+- 对比模型是调用一个工具，还是连续调用多个工具。
 
-## Lesson 03
+## 第 03 课
 
-- Change the system prompt from bilingual assistant to contract-review assistant.
-- Force the output to include `answer`, `evidence`, and `limitations`.
-- Test whether the model follows the output shape.
+- 把系统提示词从双语助手改成合同审阅助手。
+- 要求输出必须包含 `answer`、`evidence` 和 `limitations`。
+- 测试模型是否遵守指定输出结构。
 
-## Lesson 04
+## 第 04 课
 
-- Change the `thread_id` and observe whether the agent still remembers the favorite city.
-- Add a second preference in the first message.
-- Ask about both preferences in the second message.
+- 修改 `thread_id`，观察 Agent 是否还能记住最喜欢的城市。
+- 在第一条消息中增加第二个偏好。
+- 在第二条消息中同时询问这两个偏好。
 
-## Lesson 05
+## 第 05 课
 
-- Replace the Gutenberg URL with another public text page.
-- Ask for a summary, then ask for evidence from the fetched text.
-- Reduce `maxTokens` and observe whether the answer changes.
+- 把 Gutenberg URL 替换成另一个公开文本页面。
+- 先要求总结，再要求 Agent 从抓取文本中给出证据。
+- 调低 `maxTokens`，观察回答是否发生变化。
 
-## Lesson 06
+## 第 06 课
 
-- Compare the output of `lesson:05` and `lesson:06` for the same question.
-- Ask a counting question and check whether Deep Agent uses stronger built-in tools.
-- Enable LangSmith tracing and inspect the model/tool call sequence.
+- 用同一个问题对比 `lesson:05` 和 `lesson:06` 的输出。
+- 提一个计数问题，检查 Deep Agent 是否使用更强的内置工具。
+- 开启 LangSmith tracing，查看模型和工具的调用顺序。
 
-## Lesson 07
+## 第 07 课
 
-- Set `LANGSMITH_TRACING=true` and run `npm run lesson:07`.
-- Compare the terminal output with the LangSmith trace.
-- Check whether the trace shows the weather tool call and its arguments.
+- 设置 `LANGSMITH_TRACING=true`，然后运行 `npm run lesson:07`。
+- 对比终端输出和 LangSmith trace。
+- 检查 trace 中是否展示了天气工具调用及其参数。
 
-## Lesson 08
+## 第 08 课
 
-- Set `COURSE_RESEARCH_URL` to another public text URL.
-- Set `COURSE_RESEARCH_QUESTION` to a question that requires evidence.
-- Check whether the answer includes `answer`, `evidence`, and `limitations`.
+- 把 `COURSE_RESEARCH_URL` 设置成另一个公开文本 URL。
+- 把 `COURSE_RESEARCH_QUESTION` 设置成一个需要证据的问题。
+- 检查回答是否包含 `answer`、`evidence` 和 `limitations`。
 
-## Lesson 09
+## 第 09 课
 
-- Change the price and discount rate in `src/lessons/09-structured-output.ts`.
-- Check whether the final answer remains valid JSON.
-- Add another required JSON field in the system prompt and observe compliance.
+- 修改 `src/lessons/09-structured-output.ts` 中的价格和折扣比例。
+- 检查最终回答是否仍然是合法 JSON。
+- 在系统提示词中增加一个必填 JSON 字段，观察模型是否遵守。
 
-## Lesson 10
+## 第 10 课
 
-- Ask the Agent to read `README.md` instead of `exercises/README.md`.
-- Try a path outside the project directory and confirm the tool refuses it.
-- Ask a question that the selected file cannot answer.
+- 让 Agent 读取 `README.md`，而不是 `exercises/README.md`。
+- 尝试读取项目目录外的路径，确认工具会拒绝。
+- 提一个所选文件无法回答的问题。
 
-## Lesson 11
+## 第 11 课
 
-- Search for `memory`, `research`, and `beginner`.
-- Ask for a keyword that does not exist in the catalog.
-- Add a new course record in `src/tools/course-catalog.ts` and rerun the lesson.
+- 分别搜索 `memory`、`research` 和 `beginner`。
+- 查询一个课程目录中不存在的关键词。
+- 在 `src/tools/course-catalog.ts` 中新增一条课程记录，然后重新运行本课。
