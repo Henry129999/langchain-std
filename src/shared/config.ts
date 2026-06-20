@@ -1,32 +1,53 @@
 import "dotenv/config";
+import { ChatOpenAI } from "@langchain/openai";
 
-export const modelName = process.env.LANGCHAIN_MODEL || "gpt-5.5";
+export const modelName = process.env.GLM_MODEL || "glm-5.2";
+export const glmBaseUrl =
+  process.env.GLM_BASE_URL || "https://open.bigmodel.cn/api/paas/v4";
 
 /**
- * 检查当前环境是否配置了至少一个模型服务商的 API Key。
+ * 检查当前环境是否配置了智谱 GLM API Key。
  *
- * LangChain 可以连接多个模型服务商；课程脚本不绑定某一个服务商，
- * 因此这里统一检查常见环境变量，只要存在一个就允许继续运行。
+ * 本课程统一使用智谱 GLM 模型。真实 Key 只应该放在本地 `.env` 中，
+ * 不要写进 `.env.example`，也不要提交到 Git。
  */
 export function requireModelEnvironment(): void {
-  const hasProviderKey = [
-    "OPENAI_API_KEY",
-    "GOOGLE_API_KEY",
-    "ANTHROPIC_API_KEY",
-    "OPENROUTER_API_KEY",
-    "FIREWORKS_API_KEY",
-    "BASETEN_API_KEY",
-    "OLLAMA_API_KEY",
-    "AZURE_OPENAI_API_KEY",
-    "AWS_ACCESS_KEY_ID",
-    "HUGGINGFACEHUB_API_TOKEN",
-  ].some((key) => Boolean(process.env[key]));
-
-  if (!hasProviderKey) {
+  if (!process.env.GLM_API_KEY) {
     throw new Error(
-      "没有找到模型服务商 API Key。请复制 .env.example 为 .env，并至少填写一个服务商的 Key。"
+      "没有找到 GLM_API_KEY。请复制 .env.example 为 .env，并填写智谱 GLM API Key。"
     );
   }
+}
+
+/**
+ * 创建课程统一使用的 GLM 聊天模型。
+ *
+ * 智谱开放平台的 `/chat/completions` 接口兼容 OpenAI 风格请求，
+ * 所以这里使用 `@langchain/openai` 的 ChatOpenAI 适配器，并把 baseURL
+ * 指向 `https://open.bigmodel.cn/api/paas/v4`。
+ */
+export function createCourseModel(options?: {
+  temperature?: number;
+  timeout?: number;
+  maxTokens?: number;
+}): ChatOpenAI {
+  requireModelEnvironment();
+
+  return new ChatOpenAI({
+    model: modelName,
+    temperature: options?.temperature ?? 1,
+    timeout: options?.timeout ?? 300_000,
+    maxTokens: options?.maxTokens ?? 4096,
+    apiKey: process.env.GLM_API_KEY,
+    configuration: {
+      baseURL: glmBaseUrl,
+    },
+    modelKwargs: {
+      thinking: {
+        type: "enabled",
+      },
+    },
+  });
 }
 
 /**
@@ -38,4 +59,5 @@ export function requireModelEnvironment(): void {
 export function printLessonHeader(title: string): void {
   console.log(`\n=== ${title} ===`);
   console.log(`当前模型：${modelName}`);
+  console.log(`模型接口：${glmBaseUrl}`);
 }

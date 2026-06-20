@@ -25,19 +25,21 @@
 npm install deepagents langchain @langchain/core
 ```
 
-如果使用 OpenAI 模型，设置 API Key：
+本课程统一使用智谱 GLM 模型。复制 `.env.example` 为 `.env` 后，设置：
 
-```bash
-export OPENAI_API_KEY="your-api-key"
+```text
+GLM_API_KEY="your-api-key"
+GLM_MODEL=glm-5.2
+GLM_BASE_URL=https://open.bigmodel.cn/api/paas/v4
 ```
 
-Windows PowerShell 可以这样设置当前终端会话的环境变量：
+智谱开放平台的 `/chat/completions` 接口兼容 OpenAI 风格请求，项目中通过 `@langchain/openai` 的 `ChatOpenAI` 适配器接入。
+
+Windows PowerShell 也可以这样设置当前终端会话的环境变量：
 
 ```powershell
-$env:OPENAI_API_KEY = "your-api-key"
+$env:GLM_API_KEY = "your-api-key"
 ```
-
-也可以换成 Google Gemini、Claude、OpenRouter、Ollama、Azure OpenAI、AWS Bedrock 等模型提供商，但要同步设置对应的环境变量。
 
 ## 2. 第一个 Agent：天气查询
 
@@ -65,7 +67,7 @@ const getWeather = tool(
 );
 
 const agent = createAgent({
-  model: "gpt-5.5",
+    model: createCourseModel(),
   tools: [getWeather],
 });
 
@@ -173,15 +175,25 @@ Do not guess line counts or positions—ground them in tool results from the sav
 
 ## 5. 模型配置
 
-官方示例使用 `initChatModel` 配置模型：
+本项目使用共享方法 `createCourseModel` 配置 GLM 模型：
 
 ```ts
-import { initChatModel } from "langchain";
+import { ChatOpenAI } from "@langchain/openai";
 
-const model = await initChatModel("gpt-5.5", {
+const model = new ChatOpenAI({
+  model: "glm-5.2",
   temperature: 0.5,
-  timeout: 300,
+  timeout: 300_000,
   maxTokens: 25000,
+  apiKey: process.env.GLM_API_KEY,
+  configuration: {
+    baseURL: "https://open.bigmodel.cn/api/paas/v4",
+  },
+  modelKwargs: {
+    thinking: {
+      type: "enabled",
+    },
+  },
 });
 ```
 

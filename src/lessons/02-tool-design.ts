@@ -1,5 +1,5 @@
 import { createAgent } from "langchain";
-import { modelName, printLessonHeader, requireModelEnvironment } from "../shared/config.js";
+import { createCourseModel, printLessonHeader } from "../shared/config.js";
 import { printLastMessage } from "../shared/output.js";
 import { getCityTimezone, getWeather } from "../tools/weather.js";
 
@@ -14,12 +14,9 @@ import { getCityTimezone, getWeather } from "../tools/weather.js";
  */
 printLessonHeader("第 02 课：工具设计");
 
-// 检查模型 API Key，避免脚本运行到模型调用时才报错。
-requireModelEnvironment();
-
 // 创建带有两个工具的 Agent：天气查询和城市时区查询。
 const agent = createAgent({
-  model: modelName,
+  model: createCourseModel(),
   tools: [getWeather, getCityTimezone],
 });
 

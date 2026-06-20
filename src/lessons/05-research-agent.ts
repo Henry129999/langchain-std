@@ -1,6 +1,6 @@
 import { MemorySaver } from "@langchain/langgraph";
-import { createAgent, initChatModel } from "langchain";
-import { modelName, printLessonHeader, requireModelEnvironment } from "../shared/config.js";
+import { createAgent } from "langchain";
+import { createCourseModel, printLessonHeader } from "../shared/config.js";
 import { printLastMessage } from "../shared/output.js";
 import { researchAssistantPrompt } from "../prompts/research-assistant.js";
 import { fetchTextFromUrl } from "../tools/fetch-text-from-url.js";
@@ -9,18 +9,15 @@ import { fetchTextFromUrl } from "../tools/fetch-text-from-url.js";
  * 第 05 课：研究型 Agent
  *
  * 本节课需要学习：
- * 1. `initChatModel` 如何显式配置模型参数。
+ * 1. `createCourseModel` 如何统一创建课程使用的 GLM 模型。
  * 2. Agent 如何使用 URL 抓取工具读取外部文本。
  * 3. 系统提示词如何限制模型只根据工具结果回答。
  * 4. 为什么长文本研究任务需要明确说明限制和证据。
  */
 printLessonHeader("第 05 课：研究型 Agent");
 
-// 检查模型 API Key 是否已经配置。
-requireModelEnvironment();
-
 // 初始化聊天模型；研究任务更强调稳定性，因此把 temperature 设置得较低。
-const model = await initChatModel(modelName, {
+const model = createCourseModel({
   temperature: 0.2,
   timeout: 300_000,
   maxTokens: 4000,

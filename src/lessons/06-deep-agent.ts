@@ -1,7 +1,6 @@
 import { MemorySaver } from "@langchain/langgraph";
 import { createDeepAgent } from "deepagents";
-import { initChatModel } from "langchain";
-import { modelName, printLessonHeader, requireModelEnvironment } from "../shared/config.js";
+import { createCourseModel, printLessonHeader } from "../shared/config.js";
 import { printLastMessage } from "../shared/output.js";
 import { researchAssistantPrompt } from "../prompts/research-assistant.js";
 import { fetchTextFromUrl } from "../tools/fetch-text-from-url.js";
@@ -17,11 +16,8 @@ import { fetchTextFromUrl } from "../tools/fetch-text-from-url.js";
  */
 printLessonHeader("第 06 课：Deep Agent");
 
-// 检查模型 API Key 是否已经配置。
-requireModelEnvironment();
-
 // 初始化聊天模型；Deep Agent 会进行多步处理，因此超时时间设置得更宽松。
-const model = await initChatModel(modelName, {
+const model = createCourseModel({
   temperature: 0.2,
   timeout: 300_000,
   maxTokens: 4000,

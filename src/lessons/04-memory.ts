@@ -1,6 +1,6 @@
 import { MemorySaver } from "@langchain/langgraph";
 import { createAgent } from "langchain";
-import { modelName, printLessonHeader, requireModelEnvironment } from "../shared/config.js";
+import { createCourseModel, printLessonHeader } from "../shared/config.js";
 import { printLastMessage } from "../shared/output.js";
 import { getWeather } from "../tools/weather.js";
 
@@ -15,15 +15,12 @@ import { getWeather } from "../tools/weather.js";
  */
 printLessonHeader("第 04 课：记忆");
 
-// 检查模型 API Key 是否已经配置。
-requireModelEnvironment();
-
 // 创建内存检查点；它会在当前进程内保存同一个 thread_id 的对话历史。
 const checkpointer = new MemorySaver();
 
 // 创建带记忆的 Agent，并要求它记住当前线程内的用户偏好。
 const agent = createAgent({
-  model: modelName,
+  model: createCourseModel(),
   tools: [getWeather],
   systemPrompt: "你是一个简洁的助手。请记住当前线程中的用户偏好。",
   checkpointer,

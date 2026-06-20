@@ -1,5 +1,5 @@
 import { createAgent } from "langchain";
-import { modelName, printLessonHeader, requireModelEnvironment } from "../shared/config.js";
+import { createCourseModel, printLessonHeader } from "../shared/config.js";
 import { printLastMessage } from "../shared/output.js";
 import { getWeather } from "../tools/weather.js";
 
@@ -14,12 +14,9 @@ import { getWeather } from "../tools/weather.js";
  */
 printLessonHeader("第 03 课：系统提示词");
 
-// 检查模型 API Key 是否已经配置。
-requireModelEnvironment();
-
 // 创建 Agent，并通过系统提示词要求它用中文、简短回答，并优先调用天气工具。
 const agent = createAgent({
-  model: modelName,
+  model: createCourseModel(),
   tools: [getWeather],
   systemPrompt: `你是一个简洁的双语助手。
 

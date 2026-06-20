@@ -30,14 +30,15 @@ npm install
 Copy-Item .env.example .env
 ```
 
-然后编辑 `.env`，至少设置一个模型提供商的 API Key。默认配置使用官方文档里的 OpenAI 示例：
+然后编辑 `.env`，填写智谱 GLM API Key。本课程统一使用 GLM 模型：
 
 ```text
-OPENAI_API_KEY=你的 key
-LANGCHAIN_MODEL=gpt-5.5
+GLM_API_KEY=你的 key
+GLM_MODEL=glm-5.2
+GLM_BASE_URL=https://open.bigmodel.cn/api/paas/v4
 ```
 
-如果使用其他 provider，修改 `LANGCHAIN_MODEL` 和对应 API Key。
+真实 API Key 只放在本地 `.env`，不要提交到 Git。
 
 ## 3. 学习路线
 
@@ -115,9 +116,9 @@ langchain-agent-study/
 
 复制 `.env.example` 为 `.env`，填写对应 provider 的 key。
 
-模型名报错：
+模型名或接口报错：
 
-不同 provider 的模型命名方式不同。先用官方 Quickstart 里的模型名，确认 API Key 和 provider 配置匹配。
+确认 `.env` 中的 `GLM_MODEL`、`GLM_BASE_URL` 和 `GLM_API_KEY` 是否正确。
 
 研究型脚本消耗 token 较多：
 

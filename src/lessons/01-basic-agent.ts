@@ -1,5 +1,5 @@
 import { createAgent } from "langchain";
-import { modelName, printLessonHeader, requireModelEnvironment } from "../shared/config.js";
+import { createCourseModel, printLessonHeader } from "../shared/config.js";
 import { printLastMessage } from "../shared/output.js";
 import { getWeather } from "../tools/weather.js";
 
@@ -14,12 +14,9 @@ import { getWeather } from "../tools/weather.js";
  */
 printLessonHeader("第 01 课：基础 Agent");
 
-// 检查 `.env` 中是否已经配置至少一个模型服务商的 API Key。
-requireModelEnvironment();
-
 // 创建最小 Agent：指定模型，并把天气工具交给模型按需调用。
 const agent = createAgent({
-  model: modelName,
+  model: createCourseModel(),
   tools: [getWeather],
 });
 

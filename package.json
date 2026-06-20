@@ -20,6 +20,7 @@
   "dependencies": {
     "@langchain/core": "latest",
     "@langchain/langgraph": "latest",
+    "@langchain/openai": "^1.5.1",
     "deepagents": "latest",
     "dotenv": "latest",
     "langchain": "latest",
