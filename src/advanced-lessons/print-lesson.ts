@@ -11,6 +11,10 @@ const lessonFiles: Record<string, string> = {
   F: "src/advanced-lessons/lessons/06-production-capstone-lessons.md",
 };
 
+const runnableCommands: Record<string, string> = {
+  A01: "npm run advanced:a01",
+};
+
 if (!lessonId) {
   console.log("\n请指定课程编号，例如：npm run advanced:lesson -- A01\n");
   console.log("可用课程：");
@@ -45,4 +49,7 @@ console.log(`模块目标：${lesson.moduleOutcome}`);
 console.log(`工程重点：${lesson.engineerFocus}`);
 console.log(`实操产物：${lesson.deliverable}`);
 console.log(`课程文件：${lessonFile}`);
+if (runnableCommands[lesson.id]) {
+  console.log(`实战命令：${runnableCommands[lesson.id]}`);
+}
 console.log(`官方文档：${lesson.officialDocs.join(" | ")}`);

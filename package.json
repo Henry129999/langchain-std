@@ -23,6 +23,7 @@
     "lesson:12": "tsx src/lessons/12-langsmith-debugging-testing.ts",
     "advanced:map": "tsx src/advanced-lessons/print-course-map.ts",
     "advanced:lesson": "tsx src/advanced-lessons/print-lesson.ts",
+    "advanced:a01": "tsx src/advanced-lessons/runnable-lessons/a01-agent-harness.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

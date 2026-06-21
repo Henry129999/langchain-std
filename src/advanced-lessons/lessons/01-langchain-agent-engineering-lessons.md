@@ -6,6 +6,12 @@
 
 学习内容：`createAgent` 的 model、tools、systemPrompt、responseFormat、middleware 和 agent loop。
 
+运行命令：
+
+```bash
+npm run advanced:a01
+```
+
 最佳实践：
 
 - 固定流程优先普通 Runnable 或明确链路，只有需要动态选择工具或动态决策时才使用 Agent。

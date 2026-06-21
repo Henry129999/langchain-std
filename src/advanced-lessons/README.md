@@ -7,6 +7,7 @@
 ```bash
 npm run advanced:map
 npm run advanced:lesson -- A01
+npm run advanced:a01
 ```
 
 ## 设计原则
@@ -44,6 +45,7 @@ npm run advanced:lesson -- A01
 - `print-course-map.ts`：打印完整课程地图。
 - `print-lesson.ts`：按课程编号打印单节课入口。
 - `lessons/`：可跟学的进阶 lesson playbook。
+- `runnable-lessons/`：可直接运行的 TypeScript 实战 lesson。
 - `modules/01-langchain-agent-engineering.md`：LangChain 进阶。
 - `modules/02-rag-engineering.md`：RAG 工程。
 - `modules/03-langgraph-workflows.md`：LangGraph 编排。

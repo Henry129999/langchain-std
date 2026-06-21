@@ -15,6 +15,7 @@
 ```bash
 npm run advanced:map
 npm run advanced:lesson -- A01
+npm run advanced:a01
 ```
 
 文件：
@@ -25,6 +26,10 @@ npm run advanced:lesson -- A01
 - `04-deep-agents-lessons.md`：D01-D06
 - `05-langsmith-evaluation-lessons.md`：E01-E05
 - `06-production-capstone-lessons.md`：F01-F04
+
+可运行 TS 实战：
+
+- `npm run advanced:a01`：运行 A01 Agent Harness 架构与适用边界。
 
 学习原则：
 
