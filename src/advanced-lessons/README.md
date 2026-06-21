@@ -42,6 +42,7 @@ npm run advanced:a01
 ## 目录结构
 
 - `curriculum.ts`：结构化课程数据，可被脚本、测试或后续页面读取。
+- `coverage-rag.md`：RAG 工程课程覆盖矩阵。
 - `coverage-langgraph-deepagents.md`：LangGraph 与 Deep Agents 官方主题覆盖矩阵。
 - `print-course-map.ts`：打印完整课程地图。
 - `print-lesson.ts`：按课程编号打印单节课入口。
@@ -82,6 +83,23 @@ npm run advanced:a12
 npm run advanced:a13
 ```
 
+模块 B：RAG 与知识库工程可运行 TS 实战课：
+
+```bash
+npm run advanced:b01
+npm run advanced:b02
+npm run advanced:b03
+npm run advanced:b04
+npm run advanced:b05
+npm run advanced:b06
+npm run advanced:b07
+npm run advanced:b08
+npm run advanced:b09
+npm run advanced:b10
+npm run advanced:b11
+npm run advanced:b12
+```
+
 模块 C：LangGraph 可运行 TS 实战课：
 
 ```bash
@@ -116,4 +134,4 @@ npm run advanced:d11
 npm run advanced:d12
 ```
 
-这些 C/D 脚本会真实调用当前项目配置的大模型。LangGraph 课程使用真实 `StateGraph`、checkpoint、store、interrupt、stream 和 subgraph；Deep Agents 课程使用真实 `createDeepAgent`、StateBackend、tools、subagents、memory/skills、HITL interrupt 和 streaming。
+这些 B/C/D 脚本会真实调用当前项目配置的大模型。B 模块课程使用本地可控知识库演示 parse、chunk、index、query transform、hybrid retrieval、compression、grounding、agentic RAG 和 eval；LangGraph 课程使用真实 `StateGraph`、checkpoint、store、interrupt、stream 和 subgraph；Deep Agents 课程使用真实 `createDeepAgent`、StateBackend、tools、subagents、memory/skills、HITL interrupt 和 streaming。

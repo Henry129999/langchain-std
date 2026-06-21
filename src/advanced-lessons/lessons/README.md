@@ -16,20 +16,25 @@
 npm run advanced:map
 npm run advanced:lesson -- A01
 npm run advanced:a01
+npm run advanced:lesson -- B01
+npm run advanced:b01
 ```
 
 文件：
 
 - `01-langchain-agent-engineering-lessons.md`：A01-A13
-- `02-rag-engineering-lessons.md`：B01-B06
-- `03-langgraph-workflows-lessons.md`：C01-C08
-- `04-deep-agents-lessons.md`：D01-D06
+- `02-rag-engineering-lessons.md`：B01-B12
+- `03-langgraph-workflows-lessons.md`：C01-C12
+- `04-deep-agents-lessons.md`：D01-D12
 - `05-langsmith-evaluation-lessons.md`：E01-E05
 - `06-production-capstone-lessons.md`：F01-F04
 
 可运行 TS 实战：
 
 - `npm run advanced:a01` 到 `npm run advanced:a13`：运行模块 A 的连续 TS 实战课。
+- `npm run advanced:b01` 到 `npm run advanced:b12`：运行模块 B 的连续 RAG 工程实战课。
+- `npm run advanced:c01` 到 `npm run advanced:c12`：运行模块 C 的 LangGraph 实战课。
+- `npm run advanced:d01` 到 `npm run advanced:d12`：运行模块 D 的 Deep Agents 实战课。
 
 学习原则：
 

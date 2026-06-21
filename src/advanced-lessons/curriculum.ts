@@ -275,47 +275,105 @@ export const advancedCurriculum: AdvancedModule[] = [
       {
         id: "B02",
         track: "rag",
-        title: "文档加载、清洗与 Chunk 策略",
+        title: "文档解析：Loaders、Parsers、Metadata",
         engineerFocus:
-          "处理 Markdown、代码、网页、PDF 的 chunk 边界、metadata、去噪和增量索引。",
+          "把 Markdown、网页、PDF、代码等输入解析为标准 Document，保留 source、section、position、hash 和引用所需 metadata。",
         officialDocs: [langChainDocs.retrieval],
-        deliverable: "定义课程知识库的 chunk schema：id/source/title/section/content/hash。",
+        deliverable: "实现一个课程资料 parser，把不同来源统一成可索引的 Document schema。",
       },
       {
         id: "B03",
         track: "rag",
-        title: "Embedding、向量库与索引更新",
+        title: "Chunk 策略：证据单元、重叠、父子分块",
         engineerFocus:
-          "理解 embedding 不是答案，只是召回空间；设计索引构建、更新、删除和版本管理。",
+          "把 chunk 当成证据单元而不是固定长度文本；掌握 heading-aware、semantic、parent-child 和代码分块的取舍。",
         officialDocs: [langChainDocs.retrieval],
-        deliverable: "实现一个可替换 embedding/vector store 的接口层。",
+        deliverable: "生成带 chunkId、source、section、position、hash 的 KnowledgeChunk 列表。",
       },
       {
         id: "B04",
         track: "rag",
-        title: "Hybrid Retrieval 与 Rerank",
+        title: "Embedding 与 VectorStore 接口",
         engineerFocus:
-          "组合关键词、向量、metadata filter 和 rerank，降低只靠相似度带来的误召回。",
+          "理解 embedding 只负责召回空间，不负责事实正确性；设计可替换 embedding/vector store 接口和 namespace 隔离。",
         officialDocs: [langChainDocs.retrieval],
-        deliverable: "把 simple keyword retriever 扩展为 hybrid scoring，并输出每个 chunk 的分数解释。",
+        deliverable: "实现内存向量索引接口：upsert、delete、search、stats，并打印向量召回解释。",
       },
       {
         id: "B05",
         track: "rag",
-        title: "引用、Grounding 与拒答",
+        title: "增量索引：Hash、Delete、Version、Dirty Index",
         engineerFocus:
-          "强制答案绑定证据，区分 evidence、reasoning、final answer，证据不足时拒答。",
-        officialDocs: [langChainDocs.retrieval, langChainDocs.structuredOutput],
-        deliverable: "让研究助手输出 answer + citations + unsupportedClaims。",
+          "用 sourceHash/chunkHash/indexVersion 管理重建范围；处理删除、更新、重复 chunk 和 embedding model 切换。",
+        officialDocs: [langChainDocs.retrieval],
+        deliverable: "模拟一次文档更新，输出 upsert/delete/reindex 决策和索引统计。",
       },
       {
         id: "B06",
         track: "rag",
-        title: "RAG 评测：召回、相关性、忠实度",
+        title: "Query Transform：Rewrite、Multi-query、Step-back、HyDE",
         engineerFocus:
-          "用固定数据集评测 retrieval relevance、groundedness、correctness，而不是只看一次 demo 是否回答得像。",
+          "让用户问题转成更适合检索的查询集合，解决口语问题和文档表达不一致导致的召回失败。",
+        officialDocs: [langChainDocs.retrieval, langChainDocs.models],
+        deliverable: "对一个模糊问题生成 rewrite、multiQuery、stepBack 和 hypotheticalAnswer。",
+      },
+      {
+        id: "B07",
+        track: "rag",
+        title: "Hybrid Retrieval 与 Rerank",
+        engineerFocus:
+          "组合关键词、向量、metadata filter、rerank 和 score normalization，降低只靠相似度带来的误召回。",
+        officialDocs: [langChainDocs.retrieval],
+        deliverable: "输出 topK 结果、keyword/vector/metadata/rerank/finalScore 和每条命中的解释。",
+      },
+      {
+        id: "B08",
+        track: "rag",
+        title: "Contextual Compression：只给模型必要证据",
+        engineerFocus:
+          "检索结果不等于模型上下文；用 query-aware compression 抽取相关句子，减少上下文污染和 token 成本。",
+        officialDocs: [langChainDocs.retrieval, langChainDocs.contextEngineering],
+        deliverable: "把 topK chunks 压缩为 evidence pack，并保留 source 和 snippet。",
+      },
+      {
+        id: "B09",
+        track: "rag",
+        title: "Grounded Answer：引用、拒答、Unsupported Claims",
+        engineerFocus:
+          "强制答案绑定 evidence id，区分 evidence、final answer、unsupported claims；证据不足时拒答。",
+        officialDocs: [langChainDocs.retrieval, langChainDocs.structuredOutput],
+        deliverable: "让研究助手输出 answer、citations、unsupportedClaims、limitations。",
+      },
+      {
+        id: "B10",
+        track: "rag",
+        title: "Agentic RAG：把检索器做成 Tool",
+        engineerFocus:
+          "把 retriever 作为工具暴露给 Agent，让模型决定是否检索、检索什么、是否二次检索，同时控制工具权限和调用次数。",
+        officialDocs: [langChainDocs.retrieval, langChainDocs.agents, langChainDocs.tools],
+        deliverable: "实现一个 search_course_knowledge 工具，并观察 agent tool_calls 和最终回答。",
+      },
+      {
+        id: "B11",
+        track: "rag",
+        title: "RAG Eval：Recall、MRR、Groundedness、Correctness",
+        engineerFocus:
+          "把检索评测和生成评测分离，覆盖正例、拒答、相似干扰和过期资料；定位召回、排序、生成、引用阶段的问题。",
         officialDocs: [langSmithDocs.ragEvaluation, langSmithDocs.evaluation],
-        deliverable: "创建一组课程问答 golden cases，并定义 retrieval 与 final answer evaluator。",
+        deliverable: "创建 golden cases，输出 retrieval recall、MRR、citation coverage 和 LLM-as-judge 结果。",
+      },
+      {
+        id: "B12",
+        track: "rag",
+        title: "Production RAG Capstone：端到端知识库问答",
+        engineerFocus:
+          "整合 parse、chunk、index、query transform、hybrid retrieval、compression、grounding、eval、缓存和生产治理。",
+        officialDocs: [
+          langChainDocs.retrieval,
+          langChainDocs.contextEngineering,
+          langSmithDocs.ragEvaluation,
+        ],
+        deliverable: "运行一个完整 RAG pipeline，并输出生产检查清单。",
       },
     ],
   },
