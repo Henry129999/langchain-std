@@ -9,7 +9,7 @@
 运行命令：
 
 ```bash
-npm run advanced:01
+npm run advanced:a01
 ```
 
 最佳实践：
@@ -38,7 +38,7 @@ npm run advanced:01
 运行命令：
 
 ```bash
-npm run advanced:02
+npm run advanced:a02
 ```
 
 最佳实践：
@@ -67,7 +67,7 @@ npm run advanced:02
 运行命令：
 
 ```bash
-npm run advanced:03
+npm run advanced:a03
 ```
 
 最佳实践：
@@ -96,7 +96,7 @@ npm run advanced:03
 运行命令：
 
 ```bash
-npm run advanced:04
+npm run advanced:a04
 ```
 
 最佳实践：
@@ -125,7 +125,7 @@ npm run advanced:04
 运行命令：
 
 ```bash
-npm run advanced:05
+npm run advanced:a05
 ```
 
 最佳实践：
@@ -154,7 +154,7 @@ npm run advanced:05
 运行命令：
 
 ```bash
-npm run advanced:06
+npm run advanced:a06
 ```
 
 最佳实践：
@@ -183,7 +183,7 @@ npm run advanced:06
 运行命令：
 
 ```bash
-npm run advanced:07
+npm run advanced:a07
 ```
 
 最佳实践：
@@ -212,7 +212,7 @@ npm run advanced:07
 运行命令：
 
 ```bash
-npm run advanced:08
+npm run advanced:a08
 ```
 
 最佳实践：
@@ -241,7 +241,7 @@ npm run advanced:08
 运行命令：
 
 ```bash
-npm run advanced:09
+npm run advanced:a09
 ```
 
 最佳实践：
@@ -270,7 +270,7 @@ npm run advanced:09
 运行命令：
 
 ```bash
-npm run advanced:10
+npm run advanced:a10
 ```
 
 最佳实践：
@@ -299,7 +299,7 @@ npm run advanced:10
 运行命令：
 
 ```bash
-npm run advanced:11
+npm run advanced:a11
 ```
 
 最佳实践：
@@ -328,7 +328,7 @@ npm run advanced:11
 运行命令：
 
 ```bash
-npm run advanced:12
+npm run advanced:a12
 ```
 
 最佳实践：
@@ -357,7 +357,7 @@ npm run advanced:12
 运行命令：
 
 ```bash
-npm run advanced:13
+npm run advanced:a13
 ```
 
 最佳实践：
