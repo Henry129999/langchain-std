@@ -54,7 +54,7 @@ const result = await agent.invoke(
     messages: [
       {
         role: "user",
-        content: "请查询南京天气和时区。如果没有可用工具，请说明原因。",
+        content: "请查询上海天气和时区。如果没有可用工具，请说明原因。",
       },
     ],
   },

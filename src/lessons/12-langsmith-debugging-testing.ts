@@ -23,11 +23,11 @@ const model = fakeModel()
   .respondWithTools([
     {
       name: "get_weather",
-      args: { city: "Nanjing" },
-      id: "call_get_weather_nanjing",
+      args: { city: "Shanghai" },
+      id: "call_get_weather_shanghai",
     },
   ])
-  .respond(new AIMessage("南京今天多云，适合通勤。这一结论来自 get_weather 工具。"));
+  .respond(new AIMessage("上海今天多云，适合通勤。这一结论来自 get_weather 工具。"));
 
 const agent = createAgent({
   model,
@@ -39,7 +39,7 @@ const result = await agent.invoke({
   messages: [
     {
       role: "user",
-      content: "南京天气怎么样？",
+      content: "上海天气怎么样？",
     },
   ],
 });

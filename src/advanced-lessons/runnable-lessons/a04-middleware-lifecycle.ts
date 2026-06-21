@@ -63,7 +63,7 @@ const agent = createAgent({
 
 const result = await agent.invoke(
   {
-    messages: [{ role: "user", content: "南京今天适合户外通勤吗？" }],
+    messages: [{ role: "user", content: "上海今天适合户外通勤吗？" }],
   },
   {
     runName: "advanced-04-middleware-lifecycle",

@@ -66,7 +66,7 @@ const agent = createAgent({
 
 const stream = await agent.stream(
   {
-    messages: [{ role: "user", content: "南京天气怎么样？" }],
+    messages: [{ role: "user", content: "上海天气怎么样？" }],
   },
   {
     streamMode: "updates",

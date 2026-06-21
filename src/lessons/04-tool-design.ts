@@ -31,7 +31,7 @@ const result = await agent.invoke(
     messages: [
       {
         role: "user",
-        content: "请告诉我南京和旧金山的天气、时区和所属国家。",
+        content: "请告诉我上海和旧金山的天气、时区和所属国家。",
       },
     ],
   },

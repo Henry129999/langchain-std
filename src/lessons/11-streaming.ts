@@ -29,7 +29,7 @@ const stream = await agent.stream(
     messages: [
       {
         role: "user",
-        content: "请查询南京天气，并用一句话回答。",
+        content: "请查询上海天气，并用一句话回答。",
       },
     ],
   },

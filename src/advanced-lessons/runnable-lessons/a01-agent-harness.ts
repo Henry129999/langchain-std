@@ -53,7 +53,7 @@ const result = await agent.invoke(
     messages: [
       {
         role: "user",
-        content: "请查询南京今天的天气、时区和所属国家，并说明这些信息是否来自工具。",
+        content: "请查询上海今天的天气、时区和所属国家，并说明这些信息是否来自工具。",
       },
     ],
   },

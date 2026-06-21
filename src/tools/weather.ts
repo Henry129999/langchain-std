@@ -51,18 +51,6 @@ const cityRecords: Record<string, CityRecord> = {
     timezone: "Asia/Shanghai",
     country: "China",
   },
-  nanjing: {
-    canonicalName: "Nanjing",
-    weather: "南京今天多云，适合户外通勤。",
-    timezone: "Asia/Shanghai",
-    country: "China",
-  },
-  "南京": {
-    canonicalName: "Nanjing",
-    weather: "南京今天多云，适合户外通勤。",
-    timezone: "Asia/Shanghai",
-    country: "China",
-  },
 };
 
 function findCity(city: string): CityRecord | undefined {
