@@ -73,6 +73,8 @@ const stream = await agent.stream(
   }
 );
 
+console.log('---------->', stream);
+
 for await (const update of stream) {
   printJson("raw stream update", update);
   printJson("ui events", toUiEvents(update));

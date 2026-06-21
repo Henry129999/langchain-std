@@ -25,8 +25,11 @@ const agent = createAgent({
   tools: [],
   middleware: [
     piiMiddleware("email", {
+      // 表示处理方式是 脱敏替换，也就是把检测到的邮箱替换成类似 [REDACTED] / [REDACTED_EMAIL] 这类占位内容，避免原始邮箱继续流转
       strategy: "redact",
+      // 表示在用户输入进入模型 provider 之前先处理。也就是说，模型看到的不是原始邮箱，而是脱敏后的文本。这是最关键的安全点，因为敏感信息最好不要进模型请求和 trace
       applyToInput: true,
+      // 示模型输出返回给调用方之前也要再检查一遍，防止模型把邮箱复述出来
       applyToOutput: true,
     }),
   ],

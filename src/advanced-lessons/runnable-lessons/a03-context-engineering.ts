@@ -43,6 +43,8 @@ function retrieveChunks(question: string, topK: number): CourseChunk[] {
     .split(/\s+|，|。|、/)
     .filter(Boolean);
 
+  console.log('terms', terms)
+
   return chunks
     .map((chunk) => ({
       chunk,
@@ -66,11 +68,16 @@ function formatModelContext(retrieved: CourseChunk[]): string {
     .join("\n\n");
 }
 
+
 printLessonHeader("进阶 03：Context Engineering");
 
 const question = "什么时候应该把资料放进 model context，什么时候不应该全部塞进去？";
 const retrieved = retrieveChunks(question, 3);
 const modelContext = formatModelContext(retrieved);
+
+console.log('retrieved---------------------->', retrieved)
+console.log('modelContext---------------------->', modelContext)
+
 
 printJson("context budget", {
   maxEvidenceChunks: 3,
