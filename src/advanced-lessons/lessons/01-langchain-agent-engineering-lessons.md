@@ -9,7 +9,7 @@
 运行命令：
 
 ```bash
-npm run advanced:a01
+npm run advanced:01
 ```
 
 最佳实践：
@@ -35,6 +35,12 @@ npm run advanced:a01
 
 学习内容：模型初始化、`invoke`、`stream`、`batch`、reasoning、token usage、`withConfig`。
 
+运行命令：
+
+```bash
+npm run advanced:02
+```
+
 最佳实践：
 
 - 模型工厂只处理 provider、baseURL、timeout、temperature、reasoning 等模型级配置。
@@ -57,6 +63,12 @@ npm run advanced:a01
 ## A03 Context Engineering：控制模型可见信息
 
 学习内容：model context、tool context、lifecycle context，以及上下文预算。
+
+运行命令：
+
+```bash
+npm run advanced:03
+```
 
 最佳实践：
 
@@ -81,6 +93,12 @@ npm run advanced:a01
 
 学习内容：beforeAgent、beforeModel、wrapModelCall、wrapToolCall、afterModel、afterAgent。
 
+运行命令：
+
+```bash
+npm run advanced:04
+```
+
 最佳实践：
 
 - 日志、鉴权、限流、重试、审计属于 middleware，不要写进每个工具。
@@ -103,6 +121,12 @@ npm run advanced:a01
 ## A05 动态系统提示词与 Runtime Context
 
 学习内容：dynamic system prompt、runtime context、按角色调整行为。
+
+运行命令：
+
+```bash
+npm run advanced:05
+```
 
 最佳实践：
 
@@ -127,6 +151,12 @@ npm run advanced:a01
 
 学习内容：工具 schema、上下文读取、结构化返回、错误处理、stream writer。
 
+运行命令：
+
+```bash
+npm run advanced:06
+```
+
 最佳实践：
 
 - 工具返回统一 envelope：`ok`、`data`、`error`、`source`。
@@ -149,6 +179,12 @@ npm run advanced:a01
 ## A07 工具选择治理：动态选择、Headless Tool、调用上限
 
 学习内容：动态工具选择、headless tools、工具调用上限、工具暴露面。
+
+运行命令：
+
+```bash
+npm run advanced:07
+```
 
 最佳实践：
 
@@ -173,6 +209,12 @@ npm run advanced:a01
 
 学习内容：provider strategy、tool strategy、schema 版本、错误恢复。
 
+运行命令：
+
+```bash
+npm run advanced:08
+```
+
 最佳实践：
 
 - 程序读取 `structuredResponse`，不要解析自然语言 Markdown。
@@ -195,6 +237,12 @@ npm run advanced:a01
 ## A09 Guardrails 与 PII 治理
 
 学习内容：PII detection、输入侧/输出侧/工具侧 guardrails。
+
+运行命令：
+
+```bash
+npm run advanced:09
+```
 
 最佳实践：
 
@@ -219,6 +267,12 @@ npm run advanced:a01
 
 学习内容：approve、reject、edit、多决策、条件中断。
 
+运行命令：
+
+```bash
+npm run advanced:10
+```
+
 最佳实践：
 
 - 写文件、删数据、发请求、付费 API 调用都应进入 HITL 策略。
@@ -241,6 +295,12 @@ npm run advanced:a01
 ## A11 短期记忆与长期记忆
 
 学习内容：short-term memory、long-term store、trim/delete/summarize。
+
+运行命令：
+
+```bash
+npm run advanced:11
+```
 
 最佳实践：
 
@@ -265,6 +325,12 @@ npm run advanced:a01
 
 学习内容：agent progress、LLM tokens、custom updates、多模式 stream。
 
+运行命令：
+
+```bash
+npm run advanced:12
+```
+
 最佳实践：
 
 - 后端 stream 事件要设计为稳定协议，而不是直接把内部对象暴露给前端。
@@ -287,6 +353,12 @@ npm run advanced:a01
 ## A13 MCP 集成与工具边界
 
 学习内容：MCP server/client、stdio/HTTP transport、远程工具边界。
+
+运行命令：
+
+```bash
+npm run advanced:13
+```
 
 最佳实践：
 

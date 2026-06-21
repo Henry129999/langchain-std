@@ -7,7 +7,7 @@
 ```bash
 npm run advanced:map
 npm run advanced:lesson -- A01
-npm run advanced:a01
+npm run advanced:01
 ```
 
 ## 设计原则
@@ -60,3 +60,23 @@ npm run advanced:a01
 - [LangGraph.js overview](https://docs.langchain.com/oss/javascript/langgraph/overview)
 - [Deep Agents overview](https://docs.langchain.com/oss/javascript/deepagents/overview)
 - [LangSmith Evaluation](https://docs.langchain.com/langsmith/evaluation)
+
+## 可运行 TS 实战课
+
+模块 A 已按基础课风格落成连续脚本：
+
+```bash
+npm run advanced:01
+npm run advanced:02
+npm run advanced:03
+npm run advanced:04
+npm run advanced:05
+npm run advanced:06
+npm run advanced:07
+npm run advanced:08
+npm run advanced:09
+npm run advanced:10
+npm run advanced:11
+npm run advanced:12
+npm run advanced:13
+```

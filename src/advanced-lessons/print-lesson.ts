@@ -12,7 +12,19 @@ const lessonFiles: Record<string, string> = {
 };
 
 const runnableCommands: Record<string, string> = {
-  A01: "npm run advanced:a01",
+  A01: "npm run advanced:01",
+  A02: "npm run advanced:02",
+  A03: "npm run advanced:03",
+  A04: "npm run advanced:04",
+  A05: "npm run advanced:05",
+  A06: "npm run advanced:06",
+  A07: "npm run advanced:07",
+  A08: "npm run advanced:08",
+  A09: "npm run advanced:09",
+  A10: "npm run advanced:10",
+  A11: "npm run advanced:11",
+  A12: "npm run advanced:12",
+  A13: "npm run advanced:13",
 };
 
 if (!lessonId) {
