@@ -42,6 +42,7 @@ npm run advanced:01
 ## 目录结构
 
 - `curriculum.ts`：结构化课程数据，可被脚本、测试或后续页面读取。
+- `coverage-langgraph-deepagents.md`：LangGraph 与 Deep Agents 官方主题覆盖矩阵。
 - `print-course-map.ts`：打印完整课程地图。
 - `print-lesson.ts`：按课程编号打印单节课入口。
 - `lessons/`：可跟学的进阶 lesson playbook。

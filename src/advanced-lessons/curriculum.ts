@@ -53,20 +53,62 @@ const langGraphDocs = {
     "https://docs.langchain.com/oss/javascript/langgraph/thinking-in-langgraph",
   persistence:
     "https://docs.langchain.com/oss/javascript/langgraph/persistence",
+  faultTolerance:
+    "https://docs.langchain.com/oss/javascript/langgraph/fault-tolerance",
+  checkpointers:
+    "https://docs.langchain.com/oss/javascript/langgraph/checkpointers",
+  stores: "https://docs.langchain.com/oss/javascript/langgraph/stores",
+  eventStreaming:
+    "https://docs.langchain.com/oss/javascript/langgraph/event-streaming",
   interrupts:
     "https://docs.langchain.com/oss/javascript/langgraph/human-in-the-loop",
+  timeTravel:
+    "https://docs.langchain.com/oss/javascript/langgraph/use-time-travel",
+  memory: "https://docs.langchain.com/oss/javascript/langgraph/add-memory",
+  subgraphs: "https://docs.langchain.com/oss/javascript/langgraph/use-subgraphs",
   streaming: "https://docs.langchain.com/oss/javascript/langgraph/streaming",
+  choosingApis:
+    "https://docs.langchain.com/oss/javascript/langgraph/choosing-apis",
+  graphApi: "https://docs.langchain.com/oss/javascript/langgraph/graph-api",
+  functionalApi:
+    "https://docs.langchain.com/oss/javascript/langgraph/functional-api",
+  useFunctionalApi:
+    "https://docs.langchain.com/oss/javascript/langgraph/use-functional-api",
+  runtime: "https://docs.langchain.com/oss/javascript/langgraph/pregel",
+  test: "https://docs.langchain.com/oss/javascript/langgraph/test",
+  customStreamChannels:
+    "https://docs.langchain.com/oss/javascript/langgraph/frontend/custom-stream-channels",
 };
 
 const deepAgentDocs = {
   overview: "https://docs.langchain.com/oss/javascript/deepagents/overview",
   quickstart: "https://docs.langchain.com/oss/javascript/deepagents/quickstart",
+  models: "https://docs.langchain.com/oss/javascript/deepagents/models",
+  tools: "https://docs.langchain.com/oss/javascript/deepagents/tools",
+  contextEngineering:
+    "https://docs.langchain.com/oss/javascript/deepagents/context-engineering",
+  backends: "https://docs.langchain.com/oss/javascript/deepagents/backends",
   subagents: "https://docs.langchain.com/oss/javascript/deepagents/subagents",
+  asyncSubagents:
+    "https://docs.langchain.com/oss/javascript/deepagents/async-subagents",
+  permissions:
+    "https://docs.langchain.com/oss/javascript/deepagents/permissions",
   memory: "https://docs.langchain.com/oss/javascript/deepagents/memory",
+  skills: "https://docs.langchain.com/oss/javascript/deepagents/skills",
+  sandboxes: "https://docs.langchain.com/oss/javascript/deepagents/sandboxes",
+  interpreters:
+    "https://docs.langchain.com/oss/javascript/deepagents/interpreters",
+  profiles: "https://docs.langchain.com/oss/javascript/deepagents/profiles",
+  streaming: "https://docs.langchain.com/oss/javascript/deepagents/streaming",
   humanInTheLoop:
     "https://docs.langchain.com/oss/javascript/deepagents/human-in-the-loop",
   customization:
     "https://docs.langchain.com/oss/javascript/deepagents/customization",
+  frontendOverview:
+    "https://docs.langchain.com/oss/javascript/deepagents/frontend/overview",
+  acp: "https://docs.langchain.com/oss/javascript/deepagents/acp",
+  goingToProduction:
+    "https://docs.langchain.com/oss/javascript/deepagents/going-to-production",
 };
 
 const langSmithDocs = {
@@ -352,8 +394,66 @@ export const advancedCurriculum: AdvancedModule[] = [
         title: "子图与多 Agent 工作流",
         engineerFocus:
           "把复杂系统拆成 reviewer、researcher、writer 子图；明确共享 state 和局部 state 的边界。",
-        officialDocs: [langGraphDocs.thinking, langGraphDocs.streaming],
+        officialDocs: [
+          langGraphDocs.thinking,
+          langGraphDocs.subgraphs,
+          langGraphDocs.streaming,
+        ],
         deliverable: "设计一个 researcher -> critic -> writer 的子图方案。",
+      },
+      {
+        id: "C09",
+        track: "langgraph",
+        title: "Persistence 深水区：Checkpointers、Stores、Memory、Time Travel",
+        engineerFocus:
+          "把 thread checkpoint、cross-thread store、graph memory、time travel 和 fault tolerance 放进同一套恢复模型中理解。",
+        officialDocs: [
+          langGraphDocs.persistence,
+          langGraphDocs.checkpointers,
+          langGraphDocs.stores,
+          langGraphDocs.memory,
+          langGraphDocs.timeTravel,
+          langGraphDocs.faultTolerance,
+        ],
+        deliverable: "设计一个 thread_id、checkpoint_id、store namespace 与回放调试策略。",
+      },
+      {
+        id: "C10",
+        track: "langgraph",
+        title: "Interrupt 高级模式：多中断、工具内中断、输入校验",
+        engineerFocus:
+          "掌握 multiple interrupts、approve/reject、review/edit state、tool interrupts、validation loop、静态断点和 Studio 调试。",
+        officialDocs: [langGraphDocs.interrupts],
+        deliverable: "实现一份 HITL 设计表：触发点、payload、resume command、幂等要求、失败恢复。",
+      },
+      {
+        id: "C11",
+        track: "langgraph",
+        title: "Streaming 深水区：事件模式、过滤、Tool Progress、Subgraph",
+        engineerFocus:
+          "覆盖 updates/values/messages/custom/debug/checkpoints/tasks，多模式组合，按 node/invocation 过滤 token，工具进度与子图事件。",
+        officialDocs: [
+          langGraphDocs.streaming,
+          langGraphDocs.eventStreaming,
+          langGraphDocs.customStreamChannels,
+        ],
+        deliverable: "定义前端可消费的 graph event envelope，并区分 tools/custom/debug 三类事件。",
+      },
+      {
+        id: "C12",
+        track: "langgraph",
+        title: "LangGraph API、Runtime、测试与生产结构",
+        engineerFocus:
+          "理解 Graph API vs Functional API、Pregel runtime、local/server 运行边界、测试策略、兼容性和应用目录结构。",
+        officialDocs: [
+          langGraphDocs.choosingApis,
+          langGraphDocs.graphApi,
+          langGraphDocs.functionalApi,
+          langGraphDocs.useFunctionalApi,
+          langGraphDocs.runtime,
+          langGraphDocs.test,
+        ],
+        deliverable: "给 capstone 设计 graph 目录结构、节点单测、端到端轨迹测试和 schema 兼容策略。",
       },
     ],
   },
@@ -378,7 +478,13 @@ export const advancedCurriculum: AdvancedModule[] = [
         title: "Execution Environment：工具、MCP、虚拟文件系统",
         engineerFocus:
           "理解 agent 可以读写哪些文件、执行哪些工具、如何限制权限和审计副作用。",
-        officialDocs: [deepAgentDocs.overview, deepAgentDocs.customization],
+        officialDocs: [
+          deepAgentDocs.overview,
+          deepAgentDocs.tools,
+          deepAgentDocs.backends,
+          deepAgentDocs.permissions,
+          deepAgentDocs.customization,
+        ],
         deliverable: "为课程研究代理设计 filesystem permission policy。",
       },
       {
@@ -396,7 +502,7 @@ export const advancedCurriculum: AdvancedModule[] = [
         title: "Subagents 设计",
         engineerFocus:
           "按职责拆分 subagent，写清 description/system prompt，最小化工具集，控制返回信息量。",
-        officialDocs: [deepAgentDocs.subagents],
+        officialDocs: [deepAgentDocs.subagents, deepAgentDocs.asyncSubagents],
         deliverable: "设计 researcher、source-checker、writer 三个 subagent 的职责和工具清单。",
       },
       {
@@ -405,7 +511,12 @@ export const advancedCurriculum: AdvancedModule[] = [
         title: "Skills 与 Memory",
         engineerFocus:
           "区分 agent-scoped、user-scoped、organization-level memory；理解 episodic memory、后台整合、并发写入风险。",
-        officialDocs: [deepAgentDocs.memory, deepAgentDocs.customization],
+        officialDocs: [
+          deepAgentDocs.skills,
+          deepAgentDocs.memory,
+          deepAgentDocs.contextEngineering,
+          deepAgentDocs.customization,
+        ],
         deliverable: "定义课程代理的技能加载规范和记忆写入规则。",
       },
       {
@@ -416,6 +527,85 @@ export const advancedCurriculum: AdvancedModule[] = [
           "对工具调用、subagent 调用、文件写入和外部请求设置 approve/reject/edit 流程。",
         officialDocs: [deepAgentDocs.humanInTheLoop],
         deliverable: "为外部搜索、文件写入、最终报告发布设计 HITL interrupt 策略。",
+      },
+      {
+        id: "D07",
+        track: "deepagents",
+        title: "Quickstart 到 createDeepAgent：模型、工具、Profile",
+        engineerFocus:
+          "从 createDeepAgent 的最小可运行入口理解模型选择、工具暴露、profile 配置和默认 harness 行为。",
+        officialDocs: [
+          deepAgentDocs.quickstart,
+          deepAgentDocs.models,
+          deepAgentDocs.tools,
+          deepAgentDocs.profiles,
+        ],
+        deliverable: "搭一个最小 Deep Agent spec：model、tools、systemPrompt、profile、运行输入和预期事件。",
+      },
+      {
+        id: "D08",
+        track: "deepagents",
+        title: "Backends、Permissions、Sandboxes、Interpreters",
+        engineerFocus:
+          "区分虚拟文件系统后端、权限策略、远程 sandbox、代码解释器和工具执行环境，避免长任务越权或污染宿主环境。",
+        officialDocs: [
+          deepAgentDocs.backends,
+          deepAgentDocs.permissions,
+          deepAgentDocs.sandboxes,
+          deepAgentDocs.interpreters,
+        ],
+        deliverable: "输出一份后端选择表：local disk、memory、LangGraph store、sandbox、interpreter 的适用边界。",
+      },
+      {
+        id: "D09",
+        track: "deepagents",
+        title: "Context Engineering、Prompt Assembly、Middleware",
+        engineerFocus:
+          "理解系统提示词装配、默认 middleware stack、provider-specific middleware、自定义 middleware、summarization、context offloading 与 prompt caching。",
+        officialDocs: [
+          deepAgentDocs.contextEngineering,
+          deepAgentDocs.customization,
+          deepAgentDocs.skills,
+          deepAgentDocs.memory,
+        ],
+        deliverable: "设计一个长任务上下文预算：always-loaded memory、按需 skills、可卸载 evidence、可缓存静态 prompt。",
+      },
+      {
+        id: "D10",
+        track: "deepagents",
+        title: "Subagents 运维：异步、追踪、结构化输出、故障诊断",
+        engineerFocus:
+          "覆盖 default/general-purpose subagent、禁用默认 subagent、compiled subagent、async subagent、streaming、LangSmith filtering、structured output 和选择错误排查。",
+        officialDocs: [
+          deepAgentDocs.subagents,
+          deepAgentDocs.asyncSubagents,
+          deepAgentDocs.streaming,
+        ],
+        deliverable: "为 researcher/source-checker/writer 定义可观测字段、输出 schema、最小工具集和错误定位手册。",
+      },
+      {
+        id: "D11",
+        track: "deepagents",
+        title: "HITL 深水区：多工具审批、编辑参数、Subagent 中断",
+        engineerFocus:
+          "把 approve/reject/edit、多工具调用、拒绝反馈、subagent tool call interrupt、tool 内 interrupt 与恢复策略做成可复用权限层。",
+        officialDocs: [deepAgentDocs.humanInTheLoop, deepAgentDocs.permissions],
+        deliverable: "为每类高风险动作定义 decisionTypes、review payload、reject message 和 resume 行为。",
+      },
+      {
+        id: "D12",
+        track: "deepagents",
+        title: "Frontend、Streaming、Protocols 与生产部署",
+        engineerFocus:
+          "理解 Deep Agents 前端事件消费、streaming 协议、ACP/MCP 集成边界、going-to-production checklist 和结构化输出交付协议。",
+        officialDocs: [
+          deepAgentDocs.frontendOverview,
+          deepAgentDocs.streaming,
+          deepAgentDocs.acp,
+          deepAgentDocs.goingToProduction,
+          deepAgentDocs.customization,
+        ],
+        deliverable: "定义一个生产发布清单：事件协议、权限策略、协议接入、trace/eval、结构化结果和回滚策略。",
       },
     ],
   },
