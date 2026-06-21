@@ -57,3 +57,32 @@
 2. 进入 B 模块补 RAG 工程基础。
 3. 进入 C 模块学习 LangGraph，先 C01-C08 建主干，再 C09-C12 做生产级补强。
 4. 最后进入 D 模块学习 Deep Agents，先 D01-D06 建长任务心智模型，再 D07-D12 做官方主题补齐和生产治理。
+
+## Runnable Lesson 覆盖
+
+| 课程 | 可运行命令 | 实战入口 |
+| --- | --- | --- |
+| C01 | `npm run advanced:c01` | `src/advanced-lessons/runnable-lessons/c01-stategraph-entry.ts` |
+| C02 | `npm run advanced:c02` | `src/advanced-lessons/runnable-lessons/c02-state-design-reducers.ts` |
+| C03 | `npm run advanced:c03` | `src/advanced-lessons/runnable-lessons/c03-conditional-routing.ts` |
+| C04 | `npm run advanced:c04` | `src/advanced-lessons/runnable-lessons/c04-command-error-recovery.ts` |
+| C05 | `npm run advanced:c05` | `src/advanced-lessons/runnable-lessons/c05-persistence-checkpointer-store.ts` |
+| C06 | `npm run advanced:c06` | `src/advanced-lessons/runnable-lessons/c06-interrupt-human-review.ts` |
+| C07 | `npm run advanced:c07` | `src/advanced-lessons/runnable-lessons/c07-langgraph-streaming.ts` |
+| C08 | `npm run advanced:c08` | `src/advanced-lessons/runnable-lessons/c08-subgraphs-multi-agent.ts` |
+| C09 | `npm run advanced:c09` | `src/advanced-lessons/runnable-lessons/c09-persistence-deep-dive.ts` |
+| C10 | `npm run advanced:c10` | `src/advanced-lessons/runnable-lessons/c10-interrupt-advanced.ts` |
+| C11 | `npm run advanced:c11` | `src/advanced-lessons/runnable-lessons/c11-streaming-deep-dive.ts` |
+| C12 | `npm run advanced:c12` | `src/advanced-lessons/runnable-lessons/c12-api-runtime-testing.ts` |
+| D01 | `npm run advanced:d01` | `src/advanced-lessons/runnable-lessons/d01-deep-agents-positioning.ts` |
+| D02 | `npm run advanced:d02` | `src/advanced-lessons/runnable-lessons/d02-execution-environment.ts` |
+| D03 | `npm run advanced:d03` | `src/advanced-lessons/runnable-lessons/d03-planning-todo-offloading.ts` |
+| D04 | `npm run advanced:d04` | `src/advanced-lessons/runnable-lessons/d04-subagents-design.ts` |
+| D05 | `npm run advanced:d05` | `src/advanced-lessons/runnable-lessons/d05-skills-memory.ts` |
+| D06 | `npm run advanced:d06` | `src/advanced-lessons/runnable-lessons/d06-hitl-permissions.ts` |
+| D07 | `npm run advanced:d07` | `src/advanced-lessons/runnable-lessons/d07-quickstart-profile.ts` |
+| D08 | `npm run advanced:d08` | `src/advanced-lessons/runnable-lessons/d08-backends-sandboxes-interpreters.ts` |
+| D09 | `npm run advanced:d09` | `src/advanced-lessons/runnable-lessons/d09-context-middleware.ts` |
+| D10 | `npm run advanced:d10` | `src/advanced-lessons/runnable-lessons/d10-subagents-operations.ts` |
+| D11 | `npm run advanced:d11` | `src/advanced-lessons/runnable-lessons/d11-hitl-deep-dive.ts` |
+| D12 | `npm run advanced:d12` | `src/advanced-lessons/runnable-lessons/d12-frontend-streaming-production.ts` |

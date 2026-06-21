@@ -81,3 +81,39 @@ npm run advanced:11
 npm run advanced:12
 npm run advanced:13
 ```
+
+模块 C：LangGraph 可运行 TS 实战课：
+
+```bash
+npm run advanced:c01
+npm run advanced:c02
+npm run advanced:c03
+npm run advanced:c04
+npm run advanced:c05
+npm run advanced:c06
+npm run advanced:c07
+npm run advanced:c08
+npm run advanced:c09
+npm run advanced:c10
+npm run advanced:c11
+npm run advanced:c12
+```
+
+模块 D：Deep Agents 可运行 TS 实战课：
+
+```bash
+npm run advanced:d01
+npm run advanced:d02
+npm run advanced:d03
+npm run advanced:d04
+npm run advanced:d05
+npm run advanced:d06
+npm run advanced:d07
+npm run advanced:d08
+npm run advanced:d09
+npm run advanced:d10
+npm run advanced:d11
+npm run advanced:d12
+```
+
+这些 C/D 脚本会真实调用当前项目配置的大模型。LangGraph 课程使用真实 `StateGraph`、checkpoint、store、interrupt、stream 和 subgraph；Deep Agents 课程使用真实 `createDeepAgent`、StateBackend、tools、subagents、memory/skills、HITL interrupt 和 streaming。

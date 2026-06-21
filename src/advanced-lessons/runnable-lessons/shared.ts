@@ -140,3 +140,26 @@ export function printJson(title: string, value: unknown): void {
   printSection(title);
   console.dir(value, { depth: 8 });
 }
+
+export function printLearningFocus(items: string[]): void {
+  printSection("this lesson focuses on");
+  items.forEach((item, index) => {
+    console.log(`${index + 1}. ${item}`);
+  });
+}
+
+export function printModelMessage(message: unknown): void {
+  const value = asMessage(message);
+
+  printSection("real model response");
+  console.log(getTextContent(value.content));
+
+  printSection("model metadata");
+  console.dir(
+    {
+      response_metadata: value.response_metadata,
+      usage_metadata: value.usage_metadata,
+    },
+    { depth: 6 }
+  );
+}
